@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Music</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+/* ==========================
+   General Style (including the header)
+========================== */
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+
+body{
+
+background:#111;
+color:white;
+font-family:"Cormorant Garamond", serif;
+font-size:22px;
+font-weight:400;
+line-height:1.7;
+
+}
+
+img{
+max-width:100%;
+display:block;
+}
+
+a{
+
+text-decoration:none;
+color:white;
+
+}
+
+header{
+
+position:fixed;
+top:0;
+left:0;
+width:100%;
+
+display:flex;
+justify-content:space-between;
+align-items:center;
+
+padding:8px 60px;
+
+z-index:100;
+
+background:rgba(0,0,0,.2);
+backdrop-filter:blur(4px);
+
+}
+
+.logo{
+
+font-family:"Cormorant Garamond",serif;
+
+font-size:32px;
+
+letter-spacing:5px;
+
+color:white;
+
+text-decoration:none;
+
+}
+
+nav{
+
+display:flex;
+gap:34px;
+
+font-family:"Cormorant Garamond", serif;
+font-size:14px;
+letter-spacing:2px;
+text-transform:uppercase;
+
+}
+
+nav a{
+    color:white;
+    opacity:0.9;
+    transition:opacity .25s ease;
+    text-decoration: none;
+}
+
+nav a:hover{
+    text-decoration: underline;
+    opacity:1;
+}
+
+/* ==========================
+   Music Page Specifics
+========================== */
+
+.music-hero{
+
+    width:100%;
+
+    height:100vh;
+
+    overflow:hidden;
+
+}
+
+.music-hero video{
+
+    width:100%;
+
+    height:100%;
+
+    object-fit:cover;
+
+    display:block;
+
+}
+
+.music-bio{
+
+    padding:120px 12%;
+
+}
+
+.music-bio p{
+
+    max-width:900px;
+
+    font-size:24px;
+
+    line-height:1.8;
+
+}
+
+.music-albums{
+
+    padding:120px 12%;
+
+}
+
+/* ==========================
+   Footer
+========================== */
+
+footer{
+
+    padding:40px 60px;
+
+    color:#aaa;
+
+    font-size:18px;
+
+}
+
+.footer-content{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    width:100%;
+
+}
+
+.social-links{
+
+    display:flex;
+
+    gap:25px;
+
+    align-items:center;
+
+}
+
+
+.social-links img{
+
+    width:28px;
+
+    height:28px;
+
+    object-fit:contain;
+
+    opacity:.7;
+
+    transition:.3s;
+
+}
+
+.social-links img:hover{
+
+    opacity:1;
+
+    transform:translateY(-3px);
+
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+
+<a href="main.html" class="logo">
+    YUE WANG
+</a>
+
+<nav>
+
+<a href="media/resume.pdf">Resume</a>
+
+<a href="music.html">Music</a>
+
+<a href="contact.html">Contact</a>
+
+</nav>
+
+</header>
+
+<!-- Hero Video -->
+
+<section class="music-hero">
+
+<video autoplay muted loop playsinline>
+
+    <source src="media/music-hero.mp4" type="video/mp4">
+
+</video>
+
+</section>
+
+<!-- Bio -->
+
+<section class="music-bio">
+
+<h2 class="section-title">
+
+Biography
+
+</h2>
+
+<p>
+Yue is passionate about studying romantic and post-romantic period music. She is especially interested in music influenced by different cultures around the world. 
+In 2021, she made her concerto debut with the University of Rochester Symphony Orchestra. In the same year, she participated in a masterclass with Peter Takacs.
+
+</p>
+
+<br>
+
+<p>
+
+Besides studying and performing solo piano, Yue enjoyed performing as a collaborative pianist. 
+She received the National Music Festival Apprentice Fellowship in 2022. 
+From 2018 to 2021, she served as a principal pianist for the University of Rochester Orchestras under Director Rachel Waddell. 
+
+
+</p>
+
+</section>
+
+<footer>
+
+<div class="footer-content">
+
+    <div class="copyright">
+        © 2026 Yue Wang
+    </div>
+
+   <div class="social-links">
+
+    <a href="https://www.linkedin.com/in/yue-wang-761b57135" target="_blank">
+        <img src="media/InBug-White.png" alt="LinkedIn">
+    </a>
+
+    <a href="https://youtube.com/@yuewangpiano" target="_blank">
+        <img src="media/yt_icon_white_digital.png" alt="YouTube">
+    </a>
+
+    </div>
+
+</div>
+
+</footer>
+</body>
+</html>

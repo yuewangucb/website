@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>NAME</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+html{
+scroll-behavior:smooth;
+}
+
+body{
+
+background:#111;
+color:white;
+font-family:"Cormorant Garamond", serif;
+font-size:22px;
+font-weight:400;
+line-height:1.7;
+
+}
+
+img{
+max-width:100%;
+display:block;
+}
+
+a{
+
+text-decoration:none;
+color:white;
+
+}
+
+header{
+
+position:fixed;
+top:0;
+left:0;
+width:100%;
+
+display:flex;
+justify-content:space-between;
+align-items:center;
+
+padding:8px 60px;
+
+z-index:100;
+
+background:rgba(0,0,0,.2);
+backdrop-filter:blur(4px);
+
+}
+
+.logo{
+
+font-family:"Cormorant Garamond",serif;
+
+font-size:32px;
+
+letter-spacing:5px;
+
+color:white;
+
+text-decoration:none;
+
+}
+
+nav{
+
+display:flex;
+gap:34px;
+
+font-family:"Cormorant Garamond", serif;
+font-size:14px;
+letter-spacing:2px;
+text-transform:uppercase;
+
+}
+
+nav a{
+    color:white;
+    opacity:0.9;
+    transition:opacity .25s ease;
+}
+
+nav a:hover{
+    text-decoration: underline;
+    opacity:1;
+}
+
+.hero{
+
+height:100vh;
+
+background:
+
+linear-gradient(rgba(0,0,0,.35),rgba(0,0,0,.55)),
+url("media/hero.jpeg");
+
+background-size:cover;
+background-position:center;
+
+display:flex;
+justify-content:center;
+align-items:center;
+
+text-align:center;
+
+padding:30px;
+
+}
+
+.hero-content{
+
+max-width:850px;
+
+}
+
+.hero h1{
+
+font-family:"Cormorant Garamond",serif;
+
+font-size:92px;
+font-weight:300;
+
+letter-spacing:6px;
+
+margin-bottom:20px;
+
+}
+
+.hero p{
+
+font-size:20px;
+
+max-width:700px;
+
+margin:auto;
+
+opacity:.9;
+
+}
+
+section{
+
+padding:60px 12%;
+
+}
+
+.section-title{
+
+font-family:"Cormorant Garamond",serif;
+
+font-size:54px;
+
+font-weight:300;
+
+margin-bottom:60px;
+
+}
+
+.about{
+
+display:grid;
+
+grid-template-columns:1fr 1fr;
+
+gap:70px;
+
+align-items:center;
+
+}
+
+.about img{
+
+border-radius:8px;
+
+}
+
+.cards{
+
+display:grid;
+
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+
+gap:30px;
+
+}
+
+.card{
+
+background:#1c1c1c;
+
+padding:25px;
+
+border-radius:8px;
+
+transition:.35s;
+
+}
+
+.card:hover{
+
+transform:translateY(-6px);
+
+background:#252525;
+
+}
+
+.card img{
+
+margin-bottom:20px;
+
+}
+
+.card h3{
+
+margin-bottom:12px;
+
+font-family:"Cormorant Garamond",serif;
+
+font-size:34px;
+
+font-weight:400;
+
+}
+
+.pub{
+
+padding:20px 0;
+
+border-bottom:1px solid rgba(255,255,255,.15);
+
+}
+
+.pub h3{
+
+font-family:"Cormorant Garamond",serif;
+
+font-weight:400;
+
+font-size:32px;
+
+margin-bottom:8px;
+
+}
+
+footer{
+
+    padding:40px 60px;
+
+    color:#aaa;
+
+    font-size:18px;
+
+}
+
+
+.footer-content{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    width:100%;
+
+}
+
+
+.social-links{
+
+    display:flex;
+
+    gap:25px;
+
+    align-items:center;
+
+}
+
+
+.social-links img{
+
+    width:28px;
+
+    height:28px;
+
+    object-fit:contain;
+
+    opacity:.7;
+
+    transition:.3s;
+
+}
+
+
+.social-links img:hover{
+
+    opacity:1;
+
+    transform:translateY(-3px);
+
+}
+
+.button{
+
+display:inline-block;
+
+margin-top:25px;
+
+padding:14px 34px;
+
+border:1px solid white;
+
+letter-spacing:2px;
+
+text-transform:uppercase;
+
+transition:.3s;
+
+}
+
+.button:hover{
+
+background:white;
+
+color:black;
+
+}
+
+@media(max-width:900px){
+
+header{
+
+padding:20px;
+
+flex-direction:column;
+gap:20px;
+
+}
+
+.hero h1{
+
+font-size:58px;
+
+}
+
+.about{
+
+grid-template-columns:1fr;
+
+}
+
+nav{
+
+flex-wrap:wrap;
+justify-content:center;
+
+}
+
+}
+
+.card-link{
+    text-decoration:none;
+    color:inherit;
+    display:block;
+}
+
+.card-link .card{
+    height:100%;
+}
+
+.card-link:hover .card{
+    transform:translateY(-6px);
+    background:#252525;
+}
+
+.pub-link{
+    color:inherit;
+    text-decoration:none;
+    transition:opacity .25s ease, color .25s ease;
+}
+
+.pub-link:hover{
+    opacity:0.75;
+    text-decoration:underline;
+    text-underline-offset:4px;
+}
+
+.issue-banner{
+
+    position:relative;
+
+    width:100%;
+
+    overflow:hidden;
+
+}
+
+
+.issue-banner img{
+
+    width:100%;
+
+    height:auto;
+
+    display:block;
+
+}
+
+
+/* Button overlay at bottom of image */
+.issue-button{
+
+    position:absolute;
+
+    bottom:40px;
+
+    left:50%;
+
+    transform:translateX(-50%);
+
+    padding:16px 40px;
+
+    color:white;
+
+    background:rgba(0,0,0,.45);
+
+    border:1px solid white;
+
+    font-family:"Cormorant Garamond", serif;
+
+    font-size:22px;
+
+    letter-spacing:3px;
+
+    text-decoration:none;
+
+    backdrop-filter:blur(3px);
+
+    transition:.3s;
+
+}
+
+
+.issue-button:hover{
+
+    background:white;
+
+    color:black;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+<a href="main.html" class="logo">
+    YUE WANG
+</a>
+
+<nav>
+
+<a href="media/resume.pdf">Resume</a>
+
+<a href="music.html">Music</a>
+
+<a href="contact.html">Contact</a>
+
+</nav>
+
+</header>
+
+<section class="hero">
+
+<div class="hero-content">
+
+<h1>data driven physicist</h1>
+
+<p>
+
+Creating data driven solutions to real problems in science using AI, machine learning,
+and interdisciplinary research.
+
+</p>
+
+<a class="button" href="publications.html">
+
+View Projects
+
+</a>
+
+</div>
+
+</section>
+
+<section>
+
+<h2 class="section-title">About</h2>
+
+<div class="about">
+
+<img src="media/portrait.jpeg">
+
+<div>
+
+<p>
+
+I am a PhD candidate at UC Berkeley. My PhD research focuses on searching for rare astroparticle interactions.
+I am passionate about creating data driven solutions to real problems in physics using AI, machine learning, and interdisciplinary research.
+
+</p>
+
+<br>
+
+<p>
+
+From 2021 to 2024, I received the American Physical Society (APS) Forum on Graduate Student Affairs Travel Award for Excellence in Graduate Research,
+Berkeley Connect Fellowship, and Stuart J. Freedman Memorial Fellowship.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<section>
+
+<h2 class="section-title">Recent Publications</h2>
+
+<div class="pub">
+
+<h3>
+    <a href="https://doi.org/10.1103/4dyc-z8zf" class="pub-link">
+        Dark Matter Search Results from 4.2 Tonne-Years of Exposure of the LUX-ZEPLIN (LZ) Experiment
+    </a>
+</h3>
+
+<p>
+J. Aalbers, et al. • Physical Review Letters • 2025
+</p>
+
+</div>
+
+<div class="pub">
+
+<h3>
+    <a href="https://doi.org/10.1103/PhysRevLett.131.041002" class="pub-link">
+        First Dark Matter Search Results from the LUX-ZEPLIN (LZ) Experiment
+    </a>
+</h3>
+
+<p>
+J. Aalbers, et al. • Physical Review Letters • 2023
+</p>
+
+</div>
+
+<div class="pub">
+
+<h3>
+    <a href="https://www.science.org/doi/10.1126/science.abd7213" class="pub-link">
+        Enhanced charge density wave coherence in a light-quenched, high-temperature superconductor
+    </a>
+</h3>
+
+<p>
+S. Wandel, et al. • Science • 2022
+</p>
+
+</div>
+
+<a class="button" href="https://scholar.google.com/citations?user=20-dP6IAAAAJ&hl=en">
+
+View All Publications
+
+</a>
+
+</section>
+
+<section class="issue-banner">
+    <h2 class="section-title">Press</h2>
+
+    <img src="media/magazine.jpg" alt="Latest Issue">
+
+    <div class="issue-button-container">
+
+        <a href="https://physics.berkeley.edu/sites/default/files/mag_2023_forweb.pdf" class="button">
+            READ ISSUE →
+        </a>
+
+    </div>
+
+</section>
+
+<footer>
+
+<div class="footer-content">
+
+    <div class="copyright">
+        © 2026 Yue Wang
+    </div>
+
+   <div class="social-links">
+
+    <a href="https://www.linkedin.com/in/yue-wang-761b57135" target="_blank">
+        <img src="media/InBug-White.png" alt="LinkedIn">
+    </a>
+
+    <a href="https://youtube.com/@yuewangpiano" target="_blank">
+        <img src="media/yt_icon_white_digital.png" alt="YouTube">
+    </a>
+
+    </div>
+
+</div>
+
+</footer>
+
+</body>
+
+</html>
