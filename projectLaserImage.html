@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Mining Signal From 20+ TB of Raw Images | YUE WANG</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+
+body{
+
+background:#111;
+color:white;
+font-family:"Cormorant Garamond", serif;
+font-size:22px;
+font-weight:400;
+line-height:1.7;
+
+}
+
+img{
+max-width:100%;
+display:block;
+}
+
+a{
+
+text-decoration:none;
+color:white;
+
+}
+
+header{
+
+position:fixed;
+top:0;
+left:0;
+width:100%;
+
+display:flex;
+justify-content:space-between;
+align-items:center;
+
+padding:8px 60px;
+
+z-index:100;
+
+background:rgba(0,0,0,.2);
+backdrop-filter:blur(4px);
+
+}
+
+.logo{
+
+font-family:"Cormorant Garamond",serif;
+
+font-size:32px;
+
+letter-spacing:5px;
+
+color:white;
+
+text-decoration:none;
+
+}
+
+nav{
+
+display:flex;
+gap:34px;
+
+font-family:"Cormorant Garamond", serif;
+font-size:14px;
+letter-spacing:2px;
+text-transform:uppercase;
+
+}
+
+nav a{
+    color:white;
+    opacity:0.9;
+    transition:opacity .25s ease;
+    text-decoration: none;
+}
+
+nav a:hover{
+    text-decoration: underline;
+    opacity:1;
+}
+
+.contact{
+
+    min-height:100vh;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    padding:140px 20px 80px;
+
+}
+
+.contact-title{
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    gap:25px;
+
+    margin-bottom:30px;
+
+}
+
+
+.contact-title h1{
+
+    margin-bottom:0;
+
+}
+
+
+.contact-social{
+
+    display:flex;
+
+    gap:25px;
+
+    align-items:center;
+
+}
+
+
+.contact-social img{
+
+    width:32px;
+
+    height:32px;
+
+    object-fit:contain;
+
+    opacity:.75;
+
+    transition:.3s;
+
+}
+
+
+.contact-social img:hover{
+
+    opacity:1;
+
+    transform:translateY(-3px);
+
+}
+
+.container{
+
+    width:100%;
+
+    max-width:700px;
+
+    text-align:center;
+
+}
+
+
+h1{
+
+    font-size:80px;
+
+    font-weight:300;
+
+    letter-spacing:4px;
+
+    margin-bottom:30px;
+
+}
+
+
+.subtitle{
+
+    font-size:26px;
+
+    margin-bottom:60px;
+
+    opacity:.85;
+
+}
+
+
+form{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:25px;
+
+}
+
+
+input,
+textarea{
+
+    width:100%;
+
+    background:transparent;
+
+    border:none;
+
+    border-bottom:1px solid rgba(255,255,255,.5);
+
+    padding:15px 5px;
+
+    color:white;
+
+    font-family:"Cormorant Garamond", serif;
+
+    font-size:24px;
+
+    outline:none;
+
+}
+
+
+textarea{
+
+    height:160px;
+
+    resize:none;
+
+}
+
+
+
+input::placeholder,
+textarea::placeholder{
+
+    color:rgba(255,255,255,.6);
+
+}
+
+
+.button{
+
+    margin-top:30px;
+
+    align-self:center;
+
+    padding:15px 45px;
+
+    background:transparent;
+
+    border:1px solid white;
+
+    color:white;
+
+    font-family:"Cormorant Garamond", serif;
+
+    font-size:22px;
+
+    letter-spacing:3px;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+
+.button:hover{
+
+    background:white;
+
+    color:black;
+
+}
+
+
+
+
+footer{
+
+    padding:40px 60px;
+
+    color:#aaa;
+
+    font-size:18px;
+
+}
+
+
+.footer-content{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    width:100%;
+
+}
+
+
+.social-links{
+
+    display:flex;
+
+    gap:25px;
+
+    align-items:center;
+
+}
+
+
+.social-links img{
+
+    width:28px;
+
+    height:28px;
+
+    object-fit:contain;
+
+    opacity:.7;
+
+    transition:.3s;
+
+}
+
+
+.social-links img:hover{
+
+    opacity:1;
+
+    transform:translateY(-3px);
+
+}
+
+section{
+
+padding:60px 12%;
+
+}
+
+.section-title{
+
+font-family:"Cormorant Garamond",serif;
+
+font-size:54px;
+
+font-weight:300;
+
+margin-bottom:60px;
+
+}
+
+
+.about{
+
+display:grid;
+
+grid-template-columns:1fr 0.7fr;
+
+gap:50px;
+
+align-items:center;
+
+}
+
+.about img{
+
+border-radius:8px;
+
+}
+
+@media(max-width:800px){
+
+header{
+
+    flex-direction:column;
+
+    gap:15px;
+
+}
+
+h1{
+
+    font-size:55px;
+
+}
+
+nav{
+
+    flex-wrap:wrap;
+
+    justify-content:center;
+
+}
+
+}
+
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<header>
+
+<a href="index.html" class="logo">
+    YUE WANG
+</a>
+
+<nav>
+
+<a href="projects.html">Projects</a>
+
+<a href="media/resume.pdf">Resume</a>
+
+<a href="music.html">Music</a>
+
+<a href="contact.html">Contact</a>
+
+</nav>
+
+
+</header>
+
+
+
+<section>
+
+<h2 class="section-title">Mining Signal From 20+ TB of Raw Images
+
+</h2>
+
+<p>
+
+Modern perception and multi-modal models are only as good as the raw sensor data fed into them. When physical sensors generate massive, degraded data streams, isolating high-fidelity signal from ambient noise becomes the central engineering bottleneck.
+
+</p>
+
+<br>
+
+<p>
+
+I built high-throughput computer vision and signal processing pipelines to tackle over 20 TB of corrupted ultrafast laser diffraction imagery, resulting in a co-authored publication in <i>Science</i>.
+
+</p>
+
+<br>
+
+<p>
+   
+Key highlights of the pipeline:
+
+</p>
+
+<br>
+
+<div class="about">
+
+
+<div>
+
+<ul>
+<li><b>Spatiotemporal Background Subtraction:</b> Formulated a data-driven background subtraction model to decouple a static spatial noise pattern whose amplitude scaled nonlinearly from frame to frame, isolating faint dynamic targets without suppressing signals.</li>
+<li><b>Spatial Transformation at Scale:</b> Implemented high-performance data-cleaning algorithms to re-orient, de-noise, and correct spatial distortions across tens of terabytes of multi-dimensional arrays, reconstructing accurate reciprocal-space coordinates.</li>
+<li><b>High-Impact Downstream Discovery:</b> Restoring high-fidelity spatial signals unlocked a core physical discovery: tracking the transient evolution of charge density waves on picosecond scales under laser-quenched conditions.</li>
+</ul>
+</div>
+
+<img src="media/laserImage.png" alt="ExampleLaserImage">
+
+</div>
+<br>
+
+<p>
+   
+Whether you are mining subtle patterns across multi-modal sensor streams or training vision-language models on terabyte-scale messy spatial data, robust preprocessing and domain-adapted representation pipelines make or break downstream intelligence.
+
+</p>
+
+<br>
+
+<p>
+
+I specialize in building production-ready vision and signal mining systems that transform noisy, corrupted physical signals into structured, actionable representations. If your team is tackling large-scale vision,multimodal representation, or sensor processing challenges, let’s connect!
+</p>
+
+</section>
+
+<footer>
+
+<div class="footer-content">
+
+    <div class="copyright">
+        © 2026 Yue Wang
+    </div>
+
+   <div class="social-links">
+
+    <a href="https://www.linkedin.com/in/yue-wang-761b57135" target="_blank">
+        <img src="media/InBug-White.png" alt="LinkedIn">
+    </a>
+
+    <a href="https://youtube.com/@yuewangpiano" target="_blank">
+        <img src="media/yt_icon_white_digital.png" alt="YouTube">
+    </a>
+
+    </div>
+
+</div>
+
+</footer>
+
+
+</body>
+
+</html>
